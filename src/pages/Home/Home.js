@@ -1,7 +1,7 @@
 import React from 'react';
 
 function HomePage() {
-  return <section />;
+  return <section title="homepage" />;
 }
 
 export default HomePage;
