@@ -21,9 +21,4 @@ describe('Content', () => {
     const channeTtitle = screen.getAllByTestId('channeltitle')[0];
     expect(channeTtitle).toBeInTheDocument();
   });
-
-  test('should have publish time', () => {
-    const publishTime = screen.getAllByTestId('publishTime')[0];
-    expect(publishTime).toBeInTheDocument();
-  });
 });
