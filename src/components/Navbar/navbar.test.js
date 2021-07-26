@@ -12,9 +12,9 @@ describe('Navbar', () => {
     expect(logo).toBeInTheDocument();
   });
 
-  test('should have a theme toggle', () => {
-    const themeToggle = screen.getByTestId(/themetoggle/i);
-    expect(themeToggle).toBeInTheDocument();
+  test('should have a theme switch', () => {
+    const themeSwitch = screen.getByTestId(/themeswitch/i);
+    expect(themeSwitch).toBeInTheDocument();
   });
 
   test('should have a search bar', () => {

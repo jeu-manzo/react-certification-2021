@@ -9,10 +9,10 @@ export const ImgLogo = styled.div`
   flex-direction: column;
   align-items: center;
   margin-right: 20px;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   color: #1b1525;
   img {
-    height: 40px;
+    height: 35px;
   }
 `;

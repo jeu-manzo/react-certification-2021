@@ -2,6 +2,7 @@ import React from 'react';
 import { FaUserCircle } from 'react-icons/fa';
 
 import Logo from '../Logo';
+import Switch from '../Switch';
 import { Nav, Column } from './Navbar.styled';
 
 function Navbar() {
@@ -9,10 +10,10 @@ function Navbar() {
     <Nav data-testid="navbar">
       <Column>
         <Logo />
-        <span data-testid="themeToggle">Toggle</span>
+        <Switch />
       </Column>
+      <div data-testid="searchBar">Search bar</div>
       <Column>
-        <div data-testid="searchBar">Search bar</div>
         <FaUserCircle data-testid="avatar" />
       </Column>
     </Nav>
