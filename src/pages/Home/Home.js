@@ -1,12 +1,13 @@
 import React from 'react';
 
 import Filter from '../../components/Filter';
+import Content from '../../components/Content';
 
 function HomePage() {
   return (
     <section data-testid="homepage">
       <Filter />
-      <div data-testid="content">Content</div>
+      <Content />
     </section>
   );
 }
