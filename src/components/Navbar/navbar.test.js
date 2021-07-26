@@ -8,22 +8,22 @@ beforeEach(() => {
 
 describe('Navbar', () => {
   test('should have a logo', () => {
-    const logo = screen.getByTitle(/logo/i);
+    const logo = screen.getByTestId(/logo/i);
     expect(logo).toBeInTheDocument();
   });
 
   test('should have a theme toggle', () => {
-    const themeToggle = screen.getByTitle(/themetoggle/i);
+    const themeToggle = screen.getByTestId(/themetoggle/i);
     expect(themeToggle).toBeInTheDocument();
   });
 
   test('should have a search bar', () => {
-    const searchBar = screen.getByTitle(/searchbar/i);
+    const searchBar = screen.getByTestId(/searchbar/i);
     expect(searchBar).toBeInTheDocument();
   });
 
   test('should have an avatar', () => {
-    const avatar = screen.getByTitle(/avatar/i);
+    const avatar = screen.getByTestId(/avatar/i);
     expect(avatar).toBeInTheDocument();
   });
 });

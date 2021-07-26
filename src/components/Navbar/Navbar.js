@@ -8,7 +8,6 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
-  border-bottom: 1px solid black;
 `;
 
 const Column = styled.div`
@@ -18,14 +17,14 @@ const Column = styled.div`
 
 function Navbar() {
   return (
-    <Nav title="navbar">
+    <Nav data-testid="navbar">
       <Column>
         <Logo />
-        <span title="themeToggle">Toggle</span>
+        <span data-testid="themeToggle">Toggle</span>
       </Column>
       <Column>
-        <div title="searchBar">Search bar</div>
-        <div title="avatar">Avatar</div>
+        <div data-testid="searchBar">Search bar</div>
+        <div data-testid="avatar">Avatar</div>
       </Column>
     </Nav>
   );

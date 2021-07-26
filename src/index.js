@@ -7,6 +7,10 @@ import App from './components/App';
 const GlobalStyle = createGlobalStyle`
   body {
     background-color: #F9F3FD;
+    font-family: 'Open Sans', sans-serif;
+  }
+  body, html {
+    overflow-x: hidden;
   }
 `;
 

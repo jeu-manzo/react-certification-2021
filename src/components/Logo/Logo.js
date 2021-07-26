@@ -7,6 +7,7 @@ const ImgLogo = styled.div`
   align-items: center;
   margin-right: 20px;
   font-size: 20px;
+  font-weight: 600;
   color: #1b1525;
   img {
     height: 40px;
@@ -15,7 +16,7 @@ const ImgLogo = styled.div`
 
 function Logo() {
   return (
-    <ImgLogo title="logo">
+    <ImgLogo data-testid="logo">
       <img src="logo.png" alt="logo" />
       <span>VideoWave</span>
     </ImgLogo>
