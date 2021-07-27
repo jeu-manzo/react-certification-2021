@@ -4,7 +4,10 @@ export const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 10px;
+  padding: 10px 40px;
+  @media (max-width: 511px) {
+    padding: 10px;
+  }
 `;
 
 export const Column = styled.div`

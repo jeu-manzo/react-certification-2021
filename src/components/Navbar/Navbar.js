@@ -1,6 +1,5 @@
 import React from 'react';
-import { FaUserCircle } from 'react-icons/fa';
-import { BsSearch } from 'react-icons/bs';
+import { BsSearch, BsPeopleCircle } from 'react-icons/bs';
 
 import Logo from '../Logo';
 import Switch from '../Switch';
@@ -19,7 +18,7 @@ function Navbar() {
         <button type="button">
           <BsSearch />
         </button>
-        <FaUserCircle data-testid="avatar" />
+        <BsPeopleCircle data-testid="avatar" />
       </Column>
     </Nav>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 
 import { filterList } from '../../utils/filterList';
 import {
@@ -14,7 +14,7 @@ function Filter() {
   return (
     <Filters data-testid="filters">
       <ArrowLeft title="previous">
-        <FaChevronLeft />
+        <BsChevronLeft />
       </ArrowLeft>
       <ScrollContainer>
         {filterList.map((filter) => {
@@ -26,7 +26,7 @@ function Filter() {
         })}
       </ScrollContainer>
       <ArrowRight title="next">
-        <FaChevronRight />
+        <BsChevronRight />
       </ArrowRight>
     </Filters>
   );
