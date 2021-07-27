@@ -1,0 +1,39 @@
+--------------------------|----------|----------|----------|----------|-------------------|
+File                      |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+--------------------------|----------|----------|----------|----------|-------------------|
+All files                 |    94.12 |      100 |      100 |    94.12 |                   |
+ src                      |        0 |      100 |      100 |        0 |                   |
+  index.js                |        0 |      100 |      100 |        0 |              7,17 |
+ src/components/App       |      100 |      100 |      100 |      100 |                   |
+  App.js                  |      100 |      100 |      100 |      100 |                   |
+  index.js                |        0 |        0 |        0 |        0 |                   |
+ src/components/Content   |      100 |      100 |      100 |      100 |                   |
+  Content.js              |      100 |      100 |      100 |      100 |                   |
+  Content.styled.js       |      100 |      100 |      100 |      100 |                   |
+  index.js                |        0 |        0 |        0 |        0 |                   |
+ src/components/Filter    |      100 |      100 |      100 |      100 |                   |
+  Filter.js               |      100 |      100 |      100 |      100 |                   |
+  Filter.styled.js        |      100 |      100 |      100 |      100 |                   |
+  index.js                |        0 |        0 |        0 |        0 |                   |
+ src/components/Logo      |      100 |      100 |      100 |      100 |                   |
+  Logo.js                 |      100 |      100 |      100 |      100 |                   |
+  Logo.styled.js          |      100 |      100 |      100 |      100 |                   |
+  index.js                |        0 |        0 |        0 |        0 |                   |
+ src/components/Navbar    |      100 |      100 |      100 |      100 |                   |
+  Navbar.js               |      100 |      100 |      100 |      100 |                   |
+  Navbar.styled.js        |      100 |      100 |      100 |      100 |                   |
+  index.js                |        0 |        0 |        0 |        0 |                   |
+ src/components/Searchbar |      100 |      100 |      100 |      100 |                   |
+  Searchbar.js            |      100 |      100 |      100 |      100 |                   |
+  Searchbar.styled.js     |      100 |      100 |      100 |      100 |                   |
+  index.js                |        0 |        0 |        0 |        0 |                   |
+ src/components/Switch    |      100 |      100 |      100 |      100 |                   |
+  Switch.js               |      100 |      100 |      100 |      100 |                   |
+  Switch.styled.js        |      100 |      100 |      100 |      100 |                   |
+  index.js                |        0 |        0 |        0 |        0 |                   |
+ src/pages/Home           |      100 |      100 |      100 |      100 |                   |
+  Home.js                 |      100 |      100 |      100 |      100 |                   |
+  index.js                |        0 |        0 |        0 |        0 |                   |
+ src/utils                |      100 |      100 |      100 |      100 |                   |
+  filterList.js           |      100 |      100 |      100 |      100 |                   |
+--------------------------|----------|----------|----------|----------|-------------------|
