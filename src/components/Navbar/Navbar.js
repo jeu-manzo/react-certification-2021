@@ -1,8 +1,10 @@
 import React from 'react';
 import { FaUserCircle } from 'react-icons/fa';
+import { BsSearch } from 'react-icons/bs';
 
 import Logo from '../Logo';
 import Switch from '../Switch';
+import Searchbar from '../Searchbar';
 import { Nav, Column } from './Navbar.styled';
 
 function Navbar() {
@@ -12,8 +14,11 @@ function Navbar() {
         <Logo />
         <Switch />
       </Column>
-      <div data-testid="searchBar">Search bar</div>
+      <Searchbar />
       <Column>
+        <button type="button">
+          <BsSearch />
+        </button>
         <FaUserCircle data-testid="avatar" />
       </Column>
     </Nav>

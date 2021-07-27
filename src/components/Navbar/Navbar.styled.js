@@ -15,4 +15,21 @@ export const Column = styled.div`
     margin-left: 12px;
     color: #1b1525;
   }
+  button {
+    @media (min-width: 511px) {
+      display: none;
+    }
+    @media (max-width: 511px) {
+      display: flex;
+      background-color: transparent;
+      border: none;
+      :hover {
+        cursor: pointer;
+      }
+      svg {
+        color: #1b1525;
+        font-size: 24px !important;
+      }
+    }
+  }
 `;
