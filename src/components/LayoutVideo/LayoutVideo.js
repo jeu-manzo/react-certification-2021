@@ -7,7 +7,7 @@ function LayoutVideo(props) {
   const { mainLayoutVideos } = props;
   return (
     <LayoutVideos data-testid="videos">
-      {props.videos.length &&
+      {props.videos.length > 0 &&
         props.videos.map((video) => {
           if (video.snippet && video.id.kind === 'youtube#video') {
             return (

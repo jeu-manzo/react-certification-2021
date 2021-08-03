@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 
+import config from '../../utils/config';
 import videosMock from '../../utils/youtube-videos-mock';
 
 const API_URL = 'https://www.googleapis.com/youtube/v3/search';
@@ -21,7 +22,7 @@ function SearchProvider({ children }) {
   useEffect(() => {
     async function getVideos() {
       try {
-        const key = 'AIzaSyCZxDoeCPn19ZMOX5eUosvp7gBJoPF0O8c';
+        const { key } = config.youtube;
         const res = await fetch(
           `${API_URL}?part=snippet&maxResults=50&type=video&q=${filter}&key=${key}`
         );
