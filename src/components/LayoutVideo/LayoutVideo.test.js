@@ -1,20 +1,24 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 import SearchProvider from '../../providers/Search';
 import LayoutVideo from './index';
 
+import videos from '../../utils/youtube-videos-mock';
+
 beforeEach(() => {
   render(
-    <SearchProvider>
-      <LayoutVideo />
-    </SearchProvider>
+    <BrowserRouter>
+      <SearchProvider>
+        <LayoutVideo videos={videos.items} />
+      </SearchProvider>
+    </BrowserRouter>
   );
 });
 
 describe('LayoutVideo', () => {
   test('should have an image', () => {
     const image = screen.getAllByRole('img')[0];
-    console.log();
     expect(image).toBeInTheDocument();
   });
 
