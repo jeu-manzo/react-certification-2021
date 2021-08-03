@@ -1,9 +1,15 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+
+import SearchProvider from '../../providers/Search';
 import Filter from './index';
 
 beforeEach(() => {
-  render(<Filter />);
+  render(
+    <SearchProvider>
+      <Filter />
+    </SearchProvider>
+  );
 });
 
 describe('Filter', () => {

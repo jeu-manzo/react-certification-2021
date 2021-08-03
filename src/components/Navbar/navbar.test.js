@@ -1,9 +1,14 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import SearchProvider from '../../providers/Search';
 import Navbar from './index';
 
 beforeEach(() => {
-  render(<Navbar />);
+  render(
+    <SearchProvider>
+      <Navbar />
+    </SearchProvider>
+  );
 });
 
 describe('Navbar', () => {
