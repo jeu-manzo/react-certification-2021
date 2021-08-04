@@ -36,3 +36,19 @@ export const Column = styled.div`
     }
   }
 `;
+
+export const SmallScreenSearchBar = styled.div`
+  display: flex;
+`;
+
+export const LeftArrow = styled.div`
+  margin: 0 10px 10px 0;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  color: #696473;
+  cursor: pointer;
+`;

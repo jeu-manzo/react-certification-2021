@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
-import { BsSearch, BsPeopleCircle } from 'react-icons/bs';
+import { BsSearch, BsPeopleCircle, BsArrowLeftShort } from 'react-icons/bs';
 
 import Logo from '../Logo';
 import Switch from '../Switch';
 import Searchbar from '../Searchbar';
-import { Nav, Column } from './Navbar.styled';
+import { Nav, Column, SmallScreenSearchBar, LeftArrow } from './Navbar.styled';
 
 function Navbar() {
   const [searchSmallScreen, setSearchSamllScreen] = useState(false);
 
   function handleSearchClick() {
     setSearchSamllScreen(true);
+  }
+
+  function handleBackClick() {
+    setSearchSamllScreen(false);
   }
 
   if (!searchSmallScreen) {
@@ -30,7 +34,14 @@ function Navbar() {
       </Nav>
     );
   }
-  return <Searchbar smallScreen />;
+  return (
+    <SmallScreenSearchBar>
+      <LeftArrow type="button" onClick={handleBackClick}>
+        <BsArrowLeftShort />
+      </LeftArrow>
+      <Searchbar smallScreen />
+    </SmallScreenSearchBar>
+  );
 }
 
 export default Navbar;
