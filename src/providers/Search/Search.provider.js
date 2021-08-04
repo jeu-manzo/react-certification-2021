@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 
 import config from '../../utils/config';
 import videosMock from '../../utils/youtube-videos-mock';
@@ -19,27 +19,23 @@ function SearchProvider({ children }) {
   const [videos, setVideos] = useState([]);
   const [filter, setFilter] = useState('vaporwave synthwave chillwave');
 
-  useEffect(() => {
-    async function getVideos() {
-      try {
-        const { key } = config.youtube;
-        const res = await fetch(
-          `${API_URL}?part=snippet&maxResults=50&type=video&q=${filter}&key=${key}`
-        );
-        const data = await res.json();
-        if (!data.error) {
-          setVideos(data.items);
-        } else {
-          setVideos(videosMock.items);
-        }
-      } catch (error) {
+  async function getVideos() {
+    try {
+      const { key } = config.youtube;
+      const res = await fetch(
+        `${API_URL}?part=snippet&maxResults=50&type=video&q=${filter}&key=${key}`
+      );
+      const data = await res.json();
+      if (!data.error) {
+        setVideos(data.items);
+      } else {
         setVideos(videosMock.items);
-        console.error('Error: ', error);
       }
+    } catch (error) {
+      setVideos(videosMock.items);
+      console.error('Error: ', error);
     }
-
-    getVideos();
-  }, [filter]);
+  }
 
   const handleFilters = (filters) => {
     const allFilters = 'vaporwave synthwave chillwave';
@@ -52,7 +48,7 @@ function SearchProvider({ children }) {
   };
 
   return (
-    <SearchContext.Provider value={{ videos, handleFilters }}>
+    <SearchContext.Provider value={{ videos, getVideos, handleFilters }}>
       {children}
     </SearchContext.Provider>
   );
