@@ -20,7 +20,10 @@ function LayoutVideo(props) {
                     },
                   }}
                 >
-                  <img src={video.snippet.thumbnails.high.url} alt="" />
+                  <img
+                    src={video.snippet.thumbnails.high.url}
+                    alt={video.snippet.title}
+                  />
                 </Link>
                 <VideoInfo>
                   <h3 data-testid="title">{video.snippet.title}</h3>

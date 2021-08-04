@@ -34,7 +34,7 @@ function Searchbar(props) {
         onChange={(e) => handleOnChange(e)}
         onKeyPress={(e) => handleOnKeyPress(e)}
       />
-      <button type="button" onClick={handleOnClick}>
+      <button data-testid="searchButton" type="button" onClick={handleOnClick}>
         <BsSearch />
       </button>
     </SearchContainer>
