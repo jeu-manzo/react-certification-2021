@@ -48,7 +48,7 @@ function SearchProvider({ children }) {
   };
 
   return (
-    <SearchContext.Provider value={{ videos, getVideos, handleFilters }}>
+    <SearchContext.Provider value={{ videos, filter, getVideos, handleFilters }}>
       {children}
     </SearchContext.Provider>
   );

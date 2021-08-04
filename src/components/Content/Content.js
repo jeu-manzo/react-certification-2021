@@ -5,11 +5,11 @@ import { VideoContent } from './Content.styled';
 import { useSearch } from '../../providers/Search';
 
 function Content() {
-  const { videos, getVideos } = useSearch();
+  const { filter, videos, getVideos } = useSearch();
 
   useEffect(() => {
     getVideos();
-  }, [getVideos]);
+  }, [filter]);
 
   return (
     <VideoContent data-testid="content">
