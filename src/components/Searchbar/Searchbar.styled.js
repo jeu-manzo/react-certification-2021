@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const SearchContainer = styled.div`
   display: flex;
@@ -33,4 +33,12 @@ export const SearchContainer = styled.div`
       color: #696473;
     }
   }
+
+  ${(props) =>
+    props.smallScreen &&
+    css`
+      display: flex !important;
+      width: 100%;
+      margin: 0 0 10px 0;
+    `};
 `;

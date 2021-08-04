@@ -5,7 +5,7 @@ import { BsSearch } from 'react-icons/bs';
 import { SearchContainer } from './Searchbar.styled';
 import { useSearch } from '../../providers/Search';
 
-function Searchbar() {
+function Searchbar(props) {
   const history = useHistory();
   const { handleFilters } = useSearch();
   const [search, setSearch] = useState('');
@@ -27,7 +27,7 @@ function Searchbar() {
   }
 
   return (
-    <SearchContainer>
+    <SearchContainer smallScreen={props.smallScreen}>
       <input
         placeholder="Search"
         data-testid="searchBar"
