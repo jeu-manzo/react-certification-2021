@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 
-import config from '../config';
 import videosMock from '../youtube-videos-mock';
 
 const API_URL = 'https://www.googleapis.com/youtube/v3/search';
@@ -11,7 +10,7 @@ function useRelatedVideos(videoId) {
   useEffect(() => {
     async function getRelatedVideos() {
       try {
-        const { key } = config.youtube;
+        const key = process.env.REACT_APP_YOUTUBE_API_KEY;
         const res = await fetch(
           `${API_URL}?part=snippet&maxResults=50&type=video&relatedToVideoId=${videoId}&key=${key}`
         );
