@@ -26,7 +26,7 @@ function Navbar() {
         </Column>
         <Searchbar />
         <Column>
-          <button type="button" onClick={handleSearchClick}>
+          <button data-testid="button-search" type="button" onClick={handleSearchClick}>
             <BsSearch />
           </button>
           <BsPeopleCircle data-testid="avatar" />
@@ -36,7 +36,7 @@ function Navbar() {
   }
   return (
     <SmallScreenSearchBar>
-      <LeftArrow type="button" onClick={handleBackClick}>
+      <LeftArrow data-testid="backButton" type="button" onClick={handleBackClick}>
         <BsArrowLeftShort />
       </LeftArrow>
       <Searchbar smallScreen />
