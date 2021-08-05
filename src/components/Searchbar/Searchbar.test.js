@@ -16,4 +16,9 @@ describe('Searchbar', () => {
     const input = screen.getByPlaceholderText(/search/i);
     expect(input).toBeInTheDocument();
   });
+
+  test('should have an button search', () => {
+    const searchButton = screen.getByTestId(/searchButton/i);
+    expect(searchButton).toBeInTheDocument();
+  });
 });
