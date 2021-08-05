@@ -1,9 +1,14 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import SearchProvider from '../../providers/Search';
 import Navbar from './index';
 
 beforeEach(() => {
-  render(<Navbar />);
+  render(
+    <SearchProvider>
+      <Navbar />
+    </SearchProvider>
+  );
 });
 
 describe('Navbar', () => {
@@ -25,5 +30,25 @@ describe('Navbar', () => {
   test('should have an avatar', () => {
     const avatar = screen.getByTestId(/avatar/i);
     expect(avatar).toBeInTheDocument();
+  });
+
+  test('should have an icon button search', () => {
+    const buttonSearch = screen.getByTestId(/button-search/i);
+    expect(buttonSearch).toBeInTheDocument();
+  });
+
+  test('should have a small screen search bar', () => {
+    const buttonSearch = screen.getByTestId(/button-search/i);
+    fireEvent.click(buttonSearch);
+
+    const searchbar = screen.getByTestId(/searchbar/i);
+    expect(searchbar).toBeInTheDocument();
+
+    const backButton = screen.getByTestId(/backButton/i);
+    expect(backButton).toBeInTheDocument();
+
+    fireEvent.click(backButton);
+    const navbar = screen.getByTestId(/navbar/i);
+    expect(navbar).toBeInTheDocument();
   });
 });

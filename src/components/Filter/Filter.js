@@ -1,6 +1,7 @@
 import React from 'react';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 
+import { useSearch } from '../../providers/Search';
 import { filterList } from '../../utils/filterList';
 import {
   Filters,
@@ -11,6 +12,8 @@ import {
 } from './Filter.styled';
 
 function Filter() {
+  const { handleFilters } = useSearch();
+
   return (
     <Filters data-testid="filters">
       <ArrowLeft title="previous">
@@ -19,7 +22,7 @@ function Filter() {
       <ScrollContainer>
         {filterList.map((filter) => {
           return (
-            <FilterChip key={filter} alt={filter}>
+            <FilterChip key={filter} alt={filter} onClick={() => handleFilters(filter)}>
               {filter}
             </FilterChip>
           );

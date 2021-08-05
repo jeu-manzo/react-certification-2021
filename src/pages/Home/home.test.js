@@ -1,9 +1,14 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import SearchProvider from '../../providers/Search';
 import Home from './index';
 
 beforeEach(() => {
-  render(<Home />);
+  render(
+    <SearchProvider>
+      <Home />
+    </SearchProvider>
+  );
 });
 
 describe('Home', () => {
