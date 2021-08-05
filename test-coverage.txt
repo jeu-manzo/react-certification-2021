@@ -1,7 +1,7 @@
 ----------------------------|----------|----------|----------|----------|-------------------|
 File                        |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
 ----------------------------|----------|----------|----------|----------|-------------------|
-All files                   |    58.16 |    31.82 |    59.26 |    58.16 |                   |
+All files                   |    82.08 |    65.38 |       90 |    82.08 |                   |
  src                        |        0 |      100 |      100 |        0 |                   |
   index.js                  |        0 |      100 |      100 |        0 |              7,17 |
  src/components/App         |      100 |      100 |      100 |      100 |                   |
@@ -15,9 +15,9 @@ All files                   |    58.16 |    31.82 |    59.26 |    58.16 |       
   Filter.js                 |       75 |      100 |    66.67 |       75 |                25 |
   Filter.styled.js          |      100 |      100 |      100 |      100 |                   |
   index.js                  |        0 |        0 |        0 |        0 |                   |
- src/components/LayoutVideo |    88.89 |       75 |      100 |    88.89 |                   |
-  LayoutVideo.js            |       80 |    83.33 |      100 |       80 |                32 |
-  LayoutVideo.styled.js     |      100 |       50 |      100 |      100 |                18 |
+ src/components/LayoutVideo |    88.89 |     87.5 |      100 |    88.89 |                   |
+  LayoutVideo.js            |       80 |    83.33 |      100 |       80 |                35 |
+  LayoutVideo.styled.js     |      100 |      100 |      100 |      100 |                   |
   index.js                  |        0 |        0 |        0 |        0 |                   |
  src/components/Logo        |      100 |      100 |      100 |      100 |                   |
   Logo.js                   |      100 |      100 |      100 |      100 |                   |
@@ -27,8 +27,8 @@ All files                   |    58.16 |    31.82 |    59.26 |    58.16 |       
   Navbar.js                 |      100 |      100 |      100 |      100 |                   |
   Navbar.styled.js          |      100 |      100 |      100 |      100 |                   |
   index.js                  |        0 |        0 |        0 |        0 |                   |
- src/components/Searchbar   |    38.46 |        0 |    16.67 |    38.46 |                   |
-  Searchbar.js              |    33.33 |        0 |    16.67 |    33.33 |... 23,24,25,34,35 |
+ src/components/Searchbar   |    71.43 |       50 |    71.43 |    71.43 |                   |
+  Searchbar.js              |    66.67 |        0 |    66.67 |    66.67 |       23,24,25,35 |
   Searchbar.styled.js       |      100 |      100 |      100 |      100 |                   |
   index.js                  |        0 |        0 |        0 |        0 |                   |
  src/components/Switch      |      100 |      100 |      100 |      100 |                   |
@@ -38,15 +38,15 @@ All files                   |    58.16 |    31.82 |    59.26 |    58.16 |       
  src/pages/Home             |      100 |      100 |      100 |      100 |                   |
   Home.js                   |      100 |      100 |      100 |      100 |                   |
   index.js                  |        0 |        0 |        0 |        0 |                   |
- src/pages/VideoDetail      |    33.33 |      100 |        0 |    33.33 |                   |
-  VideoDetail.js            |        0 |      100 |        0 |        0 |        9,10,11,13 |
+ src/pages/VideoDetail      |      100 |      100 |      100 |      100 |                   |
+  VideoDetail.js            |      100 |      100 |      100 |      100 |                   |
   VideoDetail.styled.js     |      100 |      100 |      100 |      100 |                   |
   index.js                  |        0 |        0 |        0 |        0 |                   |
- src/providers/Search       |    55.56 |       10 |       80 |    55.56 |                   |
-  Search.provider.js        |    55.56 |       10 |       80 |    55.56 |... 45,46,47,48,50 |
+ src/providers/Search       |       80 |       60 |      100 |       80 |                   |
+  Search.provider.js        |       80 |       60 |      100 |       80 |    12,31,34,35,42 |
   index.js                  |        0 |        0 |        0 |        0 |                   |
  src/utils                  |      100 |      100 |      100 |      100 |                   |
   filterList.js             |      100 |      100 |      100 |      100 |                   |
- src/utils/hooks            |     7.14 |        0 |        0 |     7.14 |                   |
-  useRelatedVideos.js       |     7.14 |        0 |        0 |     7.14 |... 21,24,25,28,31 |
+ src/utils/hooks            |    57.14 |        0 |      100 |    57.14 |                   |
+  useRelatedVideos.js       |    57.14 |        0 |      100 |    57.14 | 17,18,19,21,24,25 |
 ----------------------------|----------|----------|----------|----------|-------------------|
