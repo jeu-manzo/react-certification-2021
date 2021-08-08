@@ -23,7 +23,7 @@ function VideoDetail() {
         <h3>{videoDetail.snippet.title}</h3>
         <p>{videoDetail.snippet.channelTitle}</p>
       </DetailLayout>
-      <LayoutVideo videos={relatedVideos} />
+      <LayoutVideo videos={relatedVideos} relatedVideos />
     </Layout>
   );
 }

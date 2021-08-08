@@ -1,13 +1,16 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
+import ThemeControlProvider from '../../providers/Theme';
 import SearchProvider from '../../providers/Search';
 import Navbar from './index';
 
 beforeEach(() => {
   render(
-    <SearchProvider>
-      <Navbar />
-    </SearchProvider>
+    <ThemeControlProvider>
+      <SearchProvider>
+        <Navbar />
+      </SearchProvider>
+    </ThemeControlProvider>
   );
 });
 

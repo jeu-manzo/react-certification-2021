@@ -16,7 +16,7 @@ export const Column = styled.div`
   svg {
     font-size: 32px;
     margin-left: 12px;
-    color: #1b1525;
+    color: ${({ theme }) => theme.color};
   }
   button {
     @media (min-width: 511px) {
@@ -30,7 +30,7 @@ export const Column = styled.div`
         cursor: pointer;
       }
       svg {
-        color: #1b1525;
+        color: ${({ theme }) => theme.color};
         font-size: 24px !important;
       }
     }
@@ -49,6 +49,6 @@ export const LeftArrow = styled.div`
   background-color: transparent;
   border: none;
   padding: 0;
-  color: #696473;
+  color: ${({ theme }) => theme.searchColor};
   cursor: pointer;
 `;

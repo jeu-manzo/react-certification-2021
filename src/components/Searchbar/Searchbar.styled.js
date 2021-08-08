@@ -5,8 +5,8 @@ export const SearchContainer = styled.div`
   width: 50%;
   height: 32px;
   margin: 0 20px;
-  border: 1px solid #cdc4d1;
-  border-radius: 3px 0 0 3px;
+  border: 1px solid ${({ theme }) => theme.searchBorder};
+  border-radius: 3px;
   @media (max-width: 511px) {
     display: none;
   }
@@ -14,23 +14,27 @@ export const SearchContainer = styled.div`
     width: 100%;
     border: none;
     padding: 2px 6px;
-    background-color: transparent;
+    background-color: ${({ theme }) => theme.searchInputBackground};
+    color: ${({ theme }) => theme.searchColor};
     ::placeholder {
-      color: #696473;
+      color: ${({ theme }) => theme.searchColor};
+    }
+    :focus-visible {
+      outline: none;
     }
   }
   button {
     width: 65px;
     border: none;
-    border-left: 1px solid #cdc4d1;
-    border-radius: 0 3px 3px 0;
-    background-color: #e9e5eb;
+    border: 1px solid ${({ theme }) => theme.searchBorder};
+    background-color: ${({ theme }) => theme.searchBackground};
     :hover {
       cursor: pointer;
-      background-color: #cdc4d1;
+      background-color: ${({ theme }) => theme.searchButtonBackground};
+      transition: background-color 0.5s cubic-bezier(0.05, 0, 0, 1);
     }
     svg {
-      color: #696473;
+      color: ${({ theme }) => theme.searchColor};
     }
   }
 

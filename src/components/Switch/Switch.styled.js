@@ -21,7 +21,7 @@ export const ToggleContainer = styled.div`
   height: 22px;
   padding: 0;
   border-radius: 30px;
-  border: 2px solid #403157;
+  border: 2px solid ${({ theme }) => theme.toggleBorder};
   transition: all 0.2s ease;
 `;
 
@@ -29,12 +29,12 @@ export const ToggleCircle = styled.div`
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   position: absolute;
   top: 0px;
-  left: 1px;
+  left: ${({ theme }) => theme.toggleCirle};
   width: 27px;
   height: 26px;
-  border: 1px solid #403157;
+  border: 1px solid ${({ theme }) => theme.toggleBorder};
   border-radius: 50%;
-  background-color: #403157;
+  background-color: ${({ theme }) => theme.toggleBackground};
   box-sizing: border-box;
   transition: all 0.25s ease;
   svg {
@@ -43,7 +43,7 @@ export const ToggleCircle = styled.div`
     left: 3px;
     font-size: 19px !important;
     margin: 0 !important;
-    color: #f9f3fd !important;
+    color: ${({ theme }) => theme.toggleColor} !important;
   }
 `;
 
