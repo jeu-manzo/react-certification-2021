@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
+import ThemeControlProvider from '../../providers/Theme';
 import App from './index';
 import mockVideos from '../../utils/youtube-videos-mock';
 
@@ -11,7 +12,11 @@ global.fetch = jest.fn(() =>
 
 beforeEach(() => {
   fetch.mockClear();
-  render(<App />);
+  render(
+    <ThemeControlProvider>
+      <App />
+    </ThemeControlProvider>
+  );
 });
 
 describe('App', () => {
