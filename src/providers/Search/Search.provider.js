@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useCallback } from 'react';
 
 import videosMock from '../../utils/youtube-videos-mock';
 
@@ -17,8 +17,9 @@ function useSearch() {
 function SearchProvider({ children }) {
   const [videos, setVideos] = useState([]);
   const [filter, setFilter] = useState('vaporwave synthwave chillwave');
+  const [video, setVideo] = useState([]);
 
-  async function getVideos() {
+  const getVideos = useCallback(async () => {
     try {
       const key = process.env.REACT_APP_YOUTUBE_API_KEY;
       const res = await fetch(
@@ -34,7 +35,7 @@ function SearchProvider({ children }) {
       setVideos(videosMock.items);
       console.error('Error: ', error);
     }
-  }
+  }, [filter]);
 
   const handleFilters = (filters) => {
     const allFilters = 'vaporwave synthwave chillwave';
@@ -46,8 +47,27 @@ function SearchProvider({ children }) {
     return true;
   };
 
+  const getVideo = useCallback(async (videoId) => {
+    const API_URL_VIDEO = 'https://www.googleapis.com/youtube/v3/videos';
+    try {
+      const key = process.env.REACT_APP_YOUTUBE_API_KEY;
+      const res = await fetch(`${API_URL_VIDEO}?part=snippet&id=${videoId}&key=${key}`);
+      const data = await res.json();
+      if (!data.error) {
+        setVideo(data.items);
+      } else {
+        setVideo(videosMock.items);
+      }
+    } catch (error) {
+      setVideo(videosMock.items);
+      console.error('Error: ', error);
+    }
+  }, []);
+
   return (
-    <SearchContext.Provider value={{ videos, filter, getVideos, handleFilters }}>
+    <SearchContext.Provider
+      value={{ video, videos, filter, getVideos, getVideo, handleFilters }}
+    >
       {children}
     </SearchContext.Provider>
   );

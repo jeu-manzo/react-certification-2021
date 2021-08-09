@@ -18,13 +18,12 @@ function App() {
         <GlobalStyle />
         <BrowserRouter>
           <SearchProvider>
+            <Navbar />
             <Switch>
               <Route exact path="/">
-                <Navbar />
                 <HomePage />
               </Route>
-              <Route exact path="/VideoDetail/:id">
-                <Navbar />
+              <Route path="/VideoDetail/:videoId">
                 <VideoDetail />
               </Route>
             </Switch>

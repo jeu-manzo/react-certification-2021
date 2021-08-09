@@ -16,9 +16,6 @@ function LayoutVideo(props) {
                 <Link
                   to={{
                     pathname: `/VideoDetail/${video.id.videoId}`,
-                    state: {
-                      videoDetail: video,
-                    },
                   }}
                 >
                   <img
