@@ -26,8 +26,10 @@ function VideoDetail() {
             src={`https://www.youtube.com/embed/${videoId}?controls=0&autoplay=0`}
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           />
-          <h3>{video[0].snippet.title}</h3>
-          <p>{video[0].snippet.channelTitle}</p>
+          <h3 data-testid={video[0].snippet.title}>{video[0].snippet.title}</h3>
+          <p data-testid={video[0].snippet.channelTitle}>
+            {video[0].snippet.channelTitle}
+          </p>
         </DetailLayout>
         <LayoutVideo videos={relatedVideos} relatedVideos />
       </Layout>

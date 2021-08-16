@@ -2,37 +2,49 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
+import { delay, makeFetchResponse } from '../../utils/helpers';
 import SearchProvider from '../../providers/Search';
 import VideoDetail from './index';
+import videoDetailMock from '../../utils/youtube-video-detail-mock';
 import videosMock from '../../utils/youtube-videos-mock';
 
-beforeEach(() => {
-  const history = createMemoryHistory();
-  const state = { videoDetail: videosMock.items[0] };
-  history.push('/VideoDetail/wOMwO5T3yT4', state);
-
-  render(
-    <SearchProvider>
-      <Router history={history}>
-        <VideoDetail />
-      </Router>
-    </SearchProvider>
-  );
-});
-
 describe('VideoDetail', () => {
-  test('should have an iframe', () => {
-    const iframe = screen.getByTitle(videosMock.items[0].snippet.title);
+  beforeEach(() => {
+    global.fetch = jest.fn().mockImplementation(async (url) => {
+      if (url.includes('relatedToVideoId')) {
+        await delay(1);
+        return makeFetchResponse(videosMock);
+      }
+      await delay(1);
+      return makeFetchResponse(videoDetailMock);
+    });
+
+    const history = createMemoryHistory();
+    history.push('/VideoDetail/Z-c6Mp3ZJCA');
+
+    render(
+      <SearchProvider>
+        <Router history={history}>
+          <VideoDetail />
+        </Router>
+      </SearchProvider>
+    );
+  });
+
+  test('should have an iframe', async () => {
+    const iframe = await screen.findByTitle(videoDetailMock.items[0].snippet.title);
     expect(iframe).toBeInTheDocument();
   });
 
-  test('should have an title', () => {
-    const title = screen.getByText(videosMock.items[0].snippet.title);
+  test('should have a title', async () => {
+    const title = await screen.findByTestId(videoDetailMock.items[0].snippet.title);
     expect(title).toBeInTheDocument();
   });
 
-  test('should have an channel title', () => {
-    const channelTitle = screen.getByText(videosMock.items[0].snippet.channelTitle);
+  test('should have an channel title', async () => {
+    const channelTitle = await screen.findByTestId(
+      videoDetailMock.items[0].snippet.channelTitle
+    );
     expect(channelTitle).toBeInTheDocument();
   });
 });
