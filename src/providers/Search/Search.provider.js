@@ -39,7 +39,7 @@ function SearchProvider({ children }) {
     if (filters === 'Show All') {
       dispatch({ type: 'FILTERS', filter: allFilters });
     } else if (filters && filters !== '') {
-      dispatch({ type: 'FILTERS', filter });
+      dispatch({ type: 'FILTERS', filter: filters });
     }
     return true;
   };
