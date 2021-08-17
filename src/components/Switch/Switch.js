@@ -1,6 +1,7 @@
 import React from 'react';
-import { BsBrightnessHighFill } from 'react-icons/bs';
+import { BsBrightnessHighFill, BsMoon } from 'react-icons/bs';
 
+import { useTheme } from '../../providers/Theme';
 import {
   ThemeSwitch,
   ToggleContainer,
@@ -9,11 +10,13 @@ import {
 } from './Switch.styled';
 
 function Switch() {
+  const { theme, handleTheme } = useTheme();
+
   return (
-    <ThemeSwitch data-testid="themeSwitch">
+    <ThemeSwitch data-testid="themeSwitch" onClick={handleTheme}>
       <ToggleContainer />
-      <ToggleCircle>
-        <BsBrightnessHighFill />
+      <ToggleCircle dark={theme}>
+        {theme.name === 'dark' ? <BsMoon /> : <BsBrightnessHighFill />}
       </ToggleCircle>
       <ToggleButton id="button" type="checkbox" aria-label="Toggle Button" />
     </ThemeSwitch>

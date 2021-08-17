@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const Filters = styled.section`
   padding: 12px 20px;
   position: relative;
-  border-top: 1px solid #1b1525;
-  border-bottom: 1px solid #1b1525;
+  border-top: 1px solid ${({ theme }) => theme.filterBorder};
+  border-bottom: 1px solid ${({ theme }) => theme.filterBorder};
 `;
 
 export const ScrollContainer = styled.div`
@@ -18,8 +18,8 @@ export const ScrollContainer = styled.div`
   overflow-x: scroll;
   width: 100%;
   button:first-child {
-    background-color: #1b1525;
-    color: #f7fdf3;
+    background-color: ${({ theme }) => theme.chipSelectedBackground};
+    color: ${({ theme }) => theme.chipSelectedColor};
   }
 `;
 
@@ -28,14 +28,16 @@ export const FilterChip = styled.button`
   align-items: center;
   height: 32px;
   padding: 0 12px;
-  background-color: #f2f0f4;
-  border: 1px solid #1b1525;
+  background-color: ${({ theme }) => theme.chipBackground};
+  border: 1px solid ${({ theme }) => theme.color};
   border-radius: 32px;
   font-size: 14px;
   font-weight: 600;
   margin: 0 12px;
+  color: ${({ theme }) => theme.color};
+  transition: background-color 0.5s cubic-bezier(0.05, 0, 0, 1);
   :hover {
-    background-color: #e9e5eb;
+    background-color: ${({ theme }) => theme.chipBackgroundHover};
     cursor: pointer;
   }
 `;
@@ -47,6 +49,7 @@ export const arrowButton = styled.button`
   bottom: 0;
   background-color: transparent;
   border: none;
+  color: ${({ theme }) => theme.color};
 `;
 
 export const ArrowLeft = styled(arrowButton)`

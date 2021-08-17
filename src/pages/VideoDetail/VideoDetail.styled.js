@@ -11,7 +11,7 @@ export const Layout = styled.div`
 export const DetailLayout = styled.div`
   display: flex;
   flex-direction: column;
-  width: 65%;
+  width: 60%;
   margin-right: 20px;
   @media (max-width: 1012px) {
     width: 100%;

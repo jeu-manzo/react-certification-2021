@@ -1,9 +1,14 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import ThemeControlProvider from '../../providers/Theme';
 import Switch from './index';
 
 beforeEach(() => {
-  render(<Switch />);
+  render(
+    <ThemeControlProvider>
+      <Switch />
+    </ThemeControlProvider>
+  );
 });
 
 describe('Switch', () => {

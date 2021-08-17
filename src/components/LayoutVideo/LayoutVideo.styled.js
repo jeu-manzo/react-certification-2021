@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const LayoutVideos = styled.div`
-  width: 100%;
+  width: ${({ relatedVideos }) => (relatedVideos ? '40%' : '100%')};
 `;
 
 export const VideoDetail = styled.div`
@@ -72,16 +72,19 @@ export const VideoInfo = styled.div`
   h3 {
     font-size: 14px;
     margin: 10px 0 5px 0;
-    color: #1b1525;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    color: ${({ theme }) => theme.color};
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   p {
     font-size: 14px;
     margin: 0;
-    color: #696473;
+    color: ${({ theme }) => theme.layoutColor};
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 `;

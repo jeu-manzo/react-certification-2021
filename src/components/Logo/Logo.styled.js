@@ -11,7 +11,7 @@ export const ImgLogo = styled.div`
   margin-right: 20px;
   font-size: 12px;
   font-weight: 600;
-  color: #1b1525;
+  color: ${({ theme }) => theme.color};
   img {
     height: 35px;
   }

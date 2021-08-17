@@ -1,8 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext, useCallback } from 'react';
+
+import { useVideosReducer } from '../../utils/hooks/useVideosReducer';
 
 import videosMock from '../../utils/youtube-videos-mock';
 
 const API_URL = 'https://www.googleapis.com/youtube/v3/search';
+const API_URL_VIDEO = 'https://www.googleapis.com/youtube/v3/videos';
 
 const SearchContext = React.createContext(null);
 
@@ -15,39 +18,77 @@ function useSearch() {
 }
 
 function SearchProvider({ children }) {
-  const [videos, setVideos] = useState([]);
-  const [filter, setFilter] = useState('vaporwave synthwave chillwave');
+  const [{ videos, video, relatedVideos, filter }, dispatch] = useVideosReducer();
 
-  async function getVideos() {
+  const getVideos = useCallback(async () => {
     try {
       const key = process.env.REACT_APP_YOUTUBE_API_KEY;
       const res = await fetch(
         `${API_URL}?part=snippet&maxResults=50&type=video&q=${filter}&key=${key}`
       );
       const data = await res.json();
-      if (!data.error) {
-        setVideos(data.items);
-      } else {
-        setVideos(videosMock.items);
-      }
+      dispatch({ type: 'SEARCH_VIDEOS', data });
     } catch (error) {
-      setVideos(videosMock.items);
+      dispatch({ type: 'SEARCH_VIDEOS', data: videosMock.items });
       console.error('Error: ', error);
     }
-  }
+  }, [filter, dispatch]);
 
   const handleFilters = (filters) => {
     const allFilters = 'vaporwave synthwave chillwave';
     if (filters === 'Show All') {
-      setFilter(allFilters);
+      dispatch({ type: 'FILTERS', filter: allFilters });
     } else if (filters && filters !== '') {
-      setFilter(filters);
+      dispatch({ type: 'FILTERS', filter: filters });
     }
     return true;
   };
 
+  const getVideo = useCallback(
+    async (videoId) => {
+      try {
+        const key = process.env.REACT_APP_YOUTUBE_API_KEY;
+        const res = await fetch(`${API_URL_VIDEO}?part=snippet&id=${videoId}&key=${key}`);
+        const data = await res.json();
+        dispatch({ type: 'VIDEO_BY_ID', data });
+      } catch (error) {
+        dispatch({ type: 'VIDEO_BY_ID', data: videosMock.items });
+        console.error('Error: ', error);
+      }
+    },
+    [dispatch]
+  );
+
+  const getRelatedVideos = useCallback(
+    async (videoId) => {
+      try {
+        const key = process.env.REACT_APP_YOUTUBE_API_KEY;
+        const res = await fetch(
+          `${API_URL}?part=snippet&maxResults=50&type=video&relatedToVideoId=${videoId}&key=${key}`
+        );
+        const data = await res.json();
+        dispatch({ type: 'RELATED_VIDEOS', data });
+      } catch (error) {
+        dispatch({ type: 'RELATED_VIDEOS', data: videosMock.items });
+        console.error('Error: ', error);
+      }
+    },
+    [dispatch]
+  );
+
   return (
-    <SearchContext.Provider value={{ videos, filter, getVideos, handleFilters }}>
+    <SearchContext.Provider
+      value={{
+        video,
+        videos,
+        relatedVideos,
+        filter,
+        getVideos,
+        getVideo,
+        handleFilters,
+        getRelatedVideos,
+      }}
+    >
       {children}
     </SearchContext.Provider>
   );

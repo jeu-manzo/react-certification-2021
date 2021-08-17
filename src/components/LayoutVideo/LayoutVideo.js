@@ -5,8 +5,9 @@ import { LayoutVideos, VideoDetail, VideoInfo } from './LayoutVideo.styled';
 
 function LayoutVideo(props) {
   const { mainLayoutVideos } = props;
+  const { relatedVideos } = props;
   return (
-    <LayoutVideos data-testid="videos">
+    <LayoutVideos data-testid="videos" relatedVideos={relatedVideos}>
       {props.videos.length > 0 &&
         props.videos.map((video) => {
           if (video.snippet && video.id.kind === 'youtube#video') {
@@ -15,9 +16,6 @@ function LayoutVideo(props) {
                 <Link
                   to={{
                     pathname: `/VideoDetail/${video.id.videoId}`,
-                    state: {
-                      videoDetail: video,
-                    },
                   }}
                 >
                   <img
