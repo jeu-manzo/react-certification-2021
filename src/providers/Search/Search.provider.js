@@ -18,6 +18,7 @@ function SearchProvider({ children }) {
   const [videos, setVideos] = useState([]);
   const [filter, setFilter] = useState('vaporwave synthwave chillwave');
   const [video, setVideo] = useState([]);
+  const [relatedVideos, setRelatedVideos] = useState([]);
 
   const getVideos = useCallback(async () => {
     try {
@@ -64,9 +65,36 @@ function SearchProvider({ children }) {
     }
   }, []);
 
+  const getRelatedVideos = useCallback(async (videoId) => {
+    try {
+      const key = process.env.REACT_APP_YOUTUBE_API_KEY;
+      const res = await fetch(
+        `${API_URL}?part=snippet&maxResults=50&type=video&relatedToVideoId=${videoId}&key=${key}`
+      );
+      const data = await res.json();
+      if (!data.error) {
+        setRelatedVideos(data.items);
+      } else {
+        setRelatedVideos(videosMock.items);
+      }
+    } catch (error) {
+      setRelatedVideos(videosMock.items);
+      console.error('Error: ', error);
+    }
+  }, []);
+
   return (
     <SearchContext.Provider
-      value={{ video, videos, filter, getVideos, getVideo, handleFilters }}
+      value={{
+        video,
+        videos,
+        relatedVideos,
+        filter,
+        getVideos,
+        getVideo,
+        handleFilters,
+        getRelatedVideos,
+      }}
     >
       {children}
     </SearchContext.Provider>

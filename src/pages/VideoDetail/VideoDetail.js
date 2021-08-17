@@ -3,17 +3,20 @@ import { useParams } from 'react-router-dom';
 
 import { useSearch } from '../../providers/Search';
 import LayoutVideo from '../../components/LayoutVideo';
-import { useRelatedVideos } from '../../utils/hooks/useRelatedVideos';
 import { Layout, DetailLayout } from './VideoDetail.styled';
 
 function VideoDetail() {
   const { videoId } = useParams();
   const { video, getVideo } = useSearch();
-  const { relatedVideos } = useRelatedVideos(videoId);
+  const { relatedVideos, getRelatedVideos } = useSearch();
 
   useEffect(() => {
     getVideo(videoId);
   }, [videoId, getVideo]);
+
+  useEffect(() => {
+    getRelatedVideos(videoId);
+  }, [videoId, getRelatedVideos]);
 
   if (video.length > 0) {
     return (
