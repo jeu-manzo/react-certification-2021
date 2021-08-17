@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { light, dark } from './theme';
+import { light, dark } from '../../utils/theme';
 
 const ThemeContext = React.createContext(null);
 

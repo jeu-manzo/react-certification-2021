@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import { ThemeProvider } from 'styled-components';
 import { useTheme } from '../../providers/Theme';
-import { GlobalStyle } from '../../providers/Theme/global';
+import { GlobalStyle } from '../../utils/global';
 import SearchProvider from '../../providers/Search';
 import Navbar from '../Navbar';
 import HomePage from '../../pages/Home';
