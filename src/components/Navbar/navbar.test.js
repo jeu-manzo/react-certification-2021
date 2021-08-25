@@ -30,9 +30,9 @@ describe('Navbar', () => {
     expect(searchBar).toBeInTheDocument();
   });
 
-  test('should have an avatar', () => {
-    const avatar = screen.getByTestId(/avatar/i);
-    expect(avatar).toBeInTheDocument();
+  test('should have a login button', () => {
+    const buttonLogin = screen.getByTestId(/buttonLogin/i);
+    expect(buttonLogin).toBeInTheDocument();
   });
 
   test('should have an icon button search', () => {
@@ -53,5 +53,13 @@ describe('Navbar', () => {
     fireEvent.click(backButton);
     const navbar = screen.getByTestId(/navbar/i);
     expect(navbar).toBeInTheDocument();
+  });
+
+  test('should open a login modal', () => {
+    const buttonLogin = screen.getByTestId(/buttonLogin/i);
+    fireEvent.click(buttonLogin);
+
+    const modalLogin = screen.getByTestId(/modalLogin/i);
+    expect(modalLogin).toBeInTheDocument();
   });
 });
