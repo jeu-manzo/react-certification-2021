@@ -63,12 +63,15 @@ function Navbar() {
                   Login
                 </ButtonLogin>
               ) : (
-                <BsPeopleCircle onClick={() => setMenuAccountOpen(!menuAccountOpen)} />
+                <BsPeopleCircle
+                  data-testid="profile"
+                  onClick={() => setMenuAccountOpen(!menuAccountOpen)}
+                />
               )}
             </div>
           ) : (
             <div>
-              <BsCircleFill />
+              <BsCircleFill data-testid="profile-blank" />
             </div>
           )}
         </Column>

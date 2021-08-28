@@ -76,12 +76,14 @@ function ModalLogin({ closeModal }) {
               />
               {visiblePassword ? (
                 <BsEyeSlashFill
+                  data-testid="hidePassword"
                   onClick={() => {
                     setVisiblePassword(!visiblePassword);
                   }}
                 />
               ) : (
                 <BsEyeFill
+                  data-testid="showPassword"
                   onClick={() => {
                     setVisiblePassword(!visiblePassword);
                   }}

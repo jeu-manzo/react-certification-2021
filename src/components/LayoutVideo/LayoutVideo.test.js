@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
+import AuthProvider from '../../providers/Auth/Auth.provider';
 import SearchProvider from '../../providers/Search';
 import LayoutVideo from './index';
 
@@ -8,11 +9,13 @@ import videos from '../../utils/youtube-videos-mock';
 
 beforeEach(() => {
   render(
-    <BrowserRouter>
-      <SearchProvider>
-        <LayoutVideo videos={videos.items} />
-      </SearchProvider>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <SearchProvider>
+          <LayoutVideo videos={videos.items} />
+        </SearchProvider>
+      </BrowserRouter>
+    </AuthProvider>
   );
 });
 

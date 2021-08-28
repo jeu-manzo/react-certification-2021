@@ -1,13 +1,16 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import AuthProvider from '../../providers/Auth/Auth.provider';
 import SearchProvider from '../../providers/Search';
 import Content from './index';
 
 beforeEach(() => {
   render(
-    <SearchProvider>
-      <Content />
-    </SearchProvider>
+    <AuthProvider>
+      <SearchProvider>
+        <Content />
+      </SearchProvider>
+    </AuthProvider>
   );
 });
 

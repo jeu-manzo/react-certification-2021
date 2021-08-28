@@ -15,9 +15,9 @@ function MenuAccount(props) {
   }
 
   return (
-    <Menu>
+    <Menu data-testid="menuAccount">
       {currentUser ? <p>{currentUser.email}</p> : null}
-      <MenuOption>
+      <MenuOption data-testid="optionFavoriteVideos">
         <Link
           to={{
             pathname: '/favoriteVideos',
@@ -28,7 +28,7 @@ function MenuAccount(props) {
           Favorite Videos
         </Link>
       </MenuOption>
-      <MenuOption type="button" onClick={signout}>
+      <MenuOption type="button" onClick={signout} data-testid="optionLogout">
         <BsBoxArrowInRight />
         Log out
       </MenuOption>
