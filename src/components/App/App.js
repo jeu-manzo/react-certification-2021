@@ -11,6 +11,7 @@ import Navbar from '../Navbar';
 import HomePage from '../../pages/Home';
 import VideoDetail from '../../pages/VideoDetail';
 import FavoriteVideos from '../../pages/FavoriteVideos/FavoriteVideos';
+import NoMatch from '../../pages/NoMatch/NoMatch';
 
 function App() {
   const { theme } = useTheme();
@@ -31,6 +32,9 @@ function App() {
                   <VideoDetail />
                 </Route>
                 <PrivateRoute path="/favoriteVideos" component={FavoriteVideos} />
+                <Route path="*">
+                  <NoMatch />
+                </Route>
               </Switch>
             </SearchProvider>
           </BrowserRouter>
