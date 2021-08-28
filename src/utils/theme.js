@@ -11,6 +11,7 @@ export const light = {
   searchBorder: '#cdc4d1',
   searchColor: '#696473',
   searchButtonBackground: '#cdc4d1',
+  loginButtonHover: '#e9e5eb',
   filterBorder: '#1b1525',
   chipBackground: '#f2f0f4',
   chipBackgroundHover: '#e9e5eb',
@@ -18,6 +19,13 @@ export const light = {
   chipSelectedColor: '#f7fdf3',
   contentBackground: '#f2f0f4',
   layoutColor: '#696473',
+  modalBackground: 'rgb(198, 193, 201, 0.6)',
+  modalBackgroundButton: '#523f70',
+  modalHoverBackgroundButton: '#403157',
+  modalColorButtons: '#F9F3FD',
+  menuBorder: '#cdc4d1',
+  menuBackground: '#cdc4d1',
+  iconLoadingColor: '#cdc4d1',
 };
 
 export const dark = {
@@ -33,6 +41,7 @@ export const dark = {
   searchBorder: '#403157',
   searchColor: '#DFDAE3',
   searchButtonBackground: '#523f70',
+  loginButtonHover: '#403157',
   filterBorder: '#403157',
   chipBackground: '#2d233e',
   chipBackgroundHover: '#403157',
@@ -40,4 +49,11 @@ export const dark = {
   chipSelectedColor: '#15101c',
   contentBackground: '#15101c',
   layoutColor: '#696473',
+  modalBackground: 'rgb(120, 113, 130, 0.6)',
+  modalBackgroundButton: '#523f70',
+  modalHoverBackgroundButton: '#403157',
+  modalColorButtons: '#F9F3FD',
+  menuBorder: '#403157',
+  menuBackground: '#403157',
+  iconLoadingColor: '#09070c',
 };

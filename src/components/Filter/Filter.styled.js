@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Filters = styled.section`
   padding: 12px 20px;
@@ -17,10 +17,6 @@ export const ScrollContainer = styled.div`
   }
   overflow-x: scroll;
   width: 100%;
-  button:first-child {
-    background-color: ${({ theme }) => theme.chipSelectedBackground};
-    color: ${({ theme }) => theme.chipSelectedColor};
-  }
 `;
 
 export const FilterChip = styled.button`
@@ -40,6 +36,16 @@ export const FilterChip = styled.button`
     background-color: ${({ theme }) => theme.chipBackgroundHover};
     cursor: pointer;
   }
+  ${(props) =>
+    props.filterSelected &&
+    css`
+      background-color: ${({ theme }) => theme.chipSelectedBackground};
+      color: ${({ theme }) => theme.chipSelectedColor};
+      :hover {
+        background-color: ${({ theme }) => theme.chipSelectedBackground};
+        color: ${({ theme }) => theme.chipSelectedColor};
+      }
+    `};
 `;
 
 export const arrowButton = styled.button`

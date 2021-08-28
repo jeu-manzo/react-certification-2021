@@ -1,15 +1,21 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 import ThemeControlProvider from '../../providers/Theme';
+import AuthProvider from '../../providers/Auth/Auth.provider';
 import SearchProvider from '../../providers/Search';
 import Navbar from './index';
 
-beforeEach(() => {
+beforeEach(async () => {
   render(
     <ThemeControlProvider>
-      <SearchProvider>
-        <Navbar />
-      </SearchProvider>
+      <AuthProvider>
+        <BrowserRouter>
+          <SearchProvider>
+            <Navbar />
+          </SearchProvider>
+        </BrowserRouter>
+      </AuthProvider>
     </ThemeControlProvider>
   );
 });
@@ -30,9 +36,9 @@ describe('Navbar', () => {
     expect(searchBar).toBeInTheDocument();
   });
 
-  test('should have an avatar', () => {
-    const avatar = screen.getByTestId(/avatar/i);
-    expect(avatar).toBeInTheDocument();
+  test('should have a profile', async () => {
+    const profile = screen.getByTestId(/profile/i);
+    expect(profile).toBeInTheDocument();
   });
 
   test('should have an icon button search', () => {
@@ -53,5 +59,22 @@ describe('Navbar', () => {
     fireEvent.click(backButton);
     const navbar = screen.getByTestId(/navbar/i);
     expect(navbar).toBeInTheDocument();
+  });
+
+  test('should open a manu account', () => {
+    const profile = screen.getByTestId(/profile/i);
+    fireEvent.click(profile);
+
+    const menuAccount = screen.getByTestId(/menuAccount/i);
+    expect(menuAccount).toBeInTheDocument();
+
+    const email = screen.getByText(/test@email.com/i);
+    expect(email).toBeInTheDocument();
+
+    const optionFavoriteVideos = screen.getByTestId(/optionFavoriteVideos/i);
+    expect(optionFavoriteVideos).toBeInTheDocument();
+
+    const optionLogout = screen.getByTestId(/optionLogout/i);
+    expect(optionLogout).toBeInTheDocument();
   });
 });

@@ -22,6 +22,12 @@ export const useVideosReducer = () => {
           relatedVideos: action.data.error ? videosMock.items : action.data.items,
         };
       }
+      case 'FAVORITE_VIDEOS': {
+        return {
+          ...state,
+          favoriteVideos: action.data.error ? videosMock.items : action.data,
+        };
+      }
       case 'FILTERS': {
         return {
           ...state,
@@ -38,6 +44,7 @@ export const useVideosReducer = () => {
     videos: [],
     video: [],
     relatedVideos: [],
+    favoriteVideos: [],
     filter: 'vaporwave synthwave chillwave',
   };
 

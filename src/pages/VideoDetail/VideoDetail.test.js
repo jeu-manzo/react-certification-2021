@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { delay, makeFetchResponse } from '../../utils/helpers';
+import AuthProvider from '../../providers/Auth/Auth.provider';
 import SearchProvider from '../../providers/Search';
 import VideoDetail from './index';
 import videoDetailMock from '../../utils/youtube-video-detail-mock';
@@ -23,11 +24,13 @@ describe('VideoDetail', () => {
     history.push('/VideoDetail/Z-c6Mp3ZJCA');
 
     render(
-      <SearchProvider>
-        <Router history={history}>
-          <VideoDetail />
-        </Router>
-      </SearchProvider>
+      <AuthProvider>
+        <SearchProvider>
+          <Router history={history}>
+            <VideoDetail />
+          </Router>
+        </SearchProvider>
+      </AuthProvider>
     );
   });
 
