@@ -20,7 +20,11 @@ export const light = {
   contentBackground: '#f2f0f4',
   layoutColor: '#696473',
   modalBackground: 'rgb(198, 193, 201, 0.6)',
-  menuBorder: '#1b1525',
+  modalBackgroundButton: '#523f70',
+  modalHoverBackgroundButton: '#403157',
+  modalColorButtons: '#F9F3FD',
+  menuBorder: '#cdc4d1',
+  menuBackground: '#cdc4d1',
 };
 
 export const dark = {
@@ -45,5 +49,9 @@ export const dark = {
   contentBackground: '#15101c',
   layoutColor: '#696473',
   modalBackground: 'rgb(120, 113, 130, 0.6)',
+  modalBackgroundButton: '#523f70',
+  modalHoverBackgroundButton: '#403157',
+  modalColorButtons: '#F9F3FD',
   menuBorder: '#403157',
+  menuBackground: '#403157',
 };

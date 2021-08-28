@@ -37,7 +37,7 @@ export const MenuOption = styled.button`
   cursor: pointer;
   font-size: 16px;
   :hover {
-    background-color: ${({ theme }) => theme.menuBorder};
+    background-color: ${({ theme }) => theme.menuBackground};
   }
   svg {
     margin-right: 15px;

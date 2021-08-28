@@ -128,11 +128,11 @@ export const Button = styled.button`
   margin-top: 25px;
   border-radius: 20px;
   border: none;
-  color: ${({ theme }) => theme.color};
-  background-color: ${({ theme }) => theme.searchButtonBackground};
+  color: ${({ theme }) => theme.modalColorButtons};
+  background-color: ${({ theme }) => theme.modalBackgroundButton};
   :hover {
     cursor: pointer;
-    background-color: ${({ theme }) => theme.searchBackground};
+    background-color: ${({ theme }) => theme.modalHoverBackgroundButton};
     transition: background-color 0.5s cubic-bezier(0.05, 0, 0, 1);
   }
 `;
