@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { BsSearch, BsArrowLeftShort, BsPeopleCircle } from 'react-icons/bs';
+import { BsSearch, BsArrowLeftShort, BsPeopleCircle, BsCircleFill } from 'react-icons/bs';
+
+import { useAuth } from '../../providers/Auth/Auth.provider';
 
 import Logo from '../Logo';
 import Switch from '../Switch';
 import Searchbar from '../Searchbar';
 import ModalLogin from '../ModalLogin';
+import MenuAccount from '../MenuAccount';
 import {
   Nav,
   ButtonSearch,
@@ -17,6 +20,8 @@ import {
 function Navbar() {
   const [searchSmallScreen, setSearchSamllScreen] = useState(false);
   const [modalLoginOpen, setModalLoginOpen] = useState(false);
+  const [menuAccountOpen, setMenuAccountOpen] = useState(false);
+  const { currentUser, authLoading } = useAuth();
 
   function handleSearchClick() {
     setSearchSamllScreen(true);
@@ -46,11 +51,28 @@ function Navbar() {
           >
             <BsSearch />
           </ButtonSearch>
-          <ButtonLogin data-testid="buttonLogin" type="button" onClick={handleModalLogin}>
-            <BsPeopleCircle />
-            Login
-          </ButtonLogin>
+          {!authLoading ? (
+            <div>
+              {!currentUser ? (
+                <ButtonLogin
+                  data-testid="buttonLogin"
+                  type="button"
+                  onClick={handleModalLogin}
+                >
+                  <BsPeopleCircle />
+                  Login
+                </ButtonLogin>
+              ) : (
+                <BsPeopleCircle onClick={() => setMenuAccountOpen(!menuAccountOpen)} />
+              )}
+            </div>
+          ) : (
+            <div>
+              <BsCircleFill />
+            </div>
+          )}
         </Column>
+        {menuAccountOpen ? <MenuAccount setMenuAccountOpen={setMenuAccountOpen} /> : null}
         {modalLoginOpen ? <ModalLogin closeModal={handleModalLogin} /> : null}
       </Nav>
     );

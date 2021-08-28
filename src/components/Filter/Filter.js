@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 
 import { useSearch } from '../../providers/Search';
@@ -12,7 +12,13 @@ import {
 } from './Filter.styled';
 
 function Filter() {
+  const [filterSelected, setFilterSelected] = useState(0);
   const { handleFilters } = useSearch();
+
+  function selectFilter(filter, index) {
+    handleFilters(filter);
+    setFilterSelected(index);
+  }
 
   return (
     <Filters data-testid="filters">
@@ -20,9 +26,14 @@ function Filter() {
         <BsChevronLeft />
       </ArrowLeft>
       <ScrollContainer>
-        {filterList.map((filter) => {
+        {filterList.map((filter, index) => {
           return (
-            <FilterChip key={filter} alt={filter} onClick={() => handleFilters(filter)}>
+            <FilterChip
+              key={filter}
+              alt={filter}
+              onClick={() => selectFilter(filter, index)}
+              filterSelected={filterSelected === index}
+            >
               {filter}
             </FilterChip>
           );

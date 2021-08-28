@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import ReactDOM from 'react-dom';
+import { useHistory } from 'react-router-dom';
 import { BsX, BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
+
+import { useAuth } from '../../providers/Auth/Auth.provider';
 
 import {
   Modal,
@@ -21,8 +24,34 @@ modalRoot.setAttribute('id', 'root-modal');
 document.body.appendChild(modalRoot);
 
 function ModalLogin({ closeModal }) {
+  const { signup, login } = useAuth();
   const [visiblePassword, setVisiblePassword] = useState(false);
   const [isModalLogin, setIsModalLogin] = useState(true);
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const history = useHistory();
+
+  async function handleSignup(e) {
+    e.preventDefault();
+    try {
+      await signup(emailRef.current.value, passwordRef.current.value);
+      closeModal();
+      history.push('/');
+    } catch (error) {
+      console.log('error-signup', error);
+    }
+  }
+
+  async function handleLogin(e) {
+    e.preventDefault();
+    try {
+      await login(emailRef.current.value, passwordRef.current.value);
+      closeModal();
+      history.push('/');
+    } catch (error) {
+      console.log('error-login', error);
+    }
+  }
 
   return ReactDOM.createPortal(
     <Modal data-testid="modalLogin">
@@ -37,11 +66,13 @@ function ModalLogin({ closeModal }) {
         </Header>
         <Content>
           <Fieldset>
-            <input type="email" placeholder="Email" />
+            <input type="email" placeholder="Email" ref={emailRef} required />
             <PasswordInput>
               <input
                 type={visiblePassword ? 'text' : 'password'}
                 placeholder="Password"
+                ref={passwordRef}
+                required
               />
               {visiblePassword ? (
                 <BsEyeSlashFill
@@ -58,7 +89,9 @@ function ModalLogin({ closeModal }) {
               )}
             </PasswordInput>
             {isModalLogin ? <a href="/">Forgot your password?</a> : null}
-            <Button type="button">{isModalLogin ? 'Log In' : 'Sign Up'}</Button>
+            <Button type="button" onClick={isModalLogin ? handleLogin : handleSignup}>
+              {isModalLogin ? 'Log In' : 'Sign Up'}
+            </Button>
           </Fieldset>
           <p>or</p>
           <ButtonImg type="button">
@@ -83,7 +116,7 @@ function ModalLogin({ closeModal }) {
             </CreateAccount>
           ) : (
             <CreateAccount>
-              <p>Do you have an account?</p>
+              <p>Already have an account?</p>
               <ButtonSwitch
                 type="button"
                 onClick={() => {

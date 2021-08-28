@@ -4,33 +4,39 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { useTheme } from '../../providers/Theme';
 import { GlobalStyle } from '../../utils/global';
+import AuthProvider from '../../providers/Auth/Auth.provider';
 import SearchProvider from '../../providers/Search';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import Navbar from '../Navbar';
 import HomePage from '../../pages/Home';
 import VideoDetail from '../../pages/VideoDetail';
+import FavoriteVideos from '../../pages/FavoriteVideos/FavoriteVideos';
 
 function App() {
   const { theme } = useTheme();
 
   return (
-    <ThemeProvider theme={theme}>
-      <>
-        <GlobalStyle />
-        <BrowserRouter>
-          <SearchProvider>
-            <Navbar />
-            <Switch>
-              <Route exact path="/">
-                <HomePage />
-              </Route>
-              <Route path="/VideoDetail/:videoId">
-                <VideoDetail />
-              </Route>
-            </Switch>
-          </SearchProvider>
-        </BrowserRouter>
-      </>
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider theme={theme}>
+        <>
+          <GlobalStyle />
+          <BrowserRouter>
+            <SearchProvider>
+              <Navbar />
+              <Switch>
+                <Route exact path="/">
+                  <HomePage />
+                </Route>
+                <Route path="/VideoDetail/:videoId">
+                  <VideoDetail />
+                </Route>
+                <PrivateRoute path="/favoriteVideos" component={FavoriteVideos} />
+              </Switch>
+            </SearchProvider>
+          </BrowserRouter>
+        </>
+      </ThemeProvider>
+    </AuthProvider>
   );
 }
 

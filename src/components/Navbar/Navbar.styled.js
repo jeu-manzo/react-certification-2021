@@ -18,6 +18,7 @@ export const Column = styled.div`
     font-size: 32px;
     margin-left: 12px;
     color: ${({ theme }) => theme.color};
+    cursor: pointer;
   }
 `;
 

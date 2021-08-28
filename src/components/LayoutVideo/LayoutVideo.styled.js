@@ -65,6 +65,28 @@ export const VideoDetail = styled.div`
     `};
 `;
 
+export const VideoFavorite = styled.span`
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: ${({ theme }) => theme.color};
+  font-size: 16px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 5px;
+  border-radius: 2px;
+  svg {
+    cursor: pointer;
+  }
+`;
+
+export const VideoImg = styled.div`
+  position: relative;
+  &:hover ${VideoFavorite} {
+    display: flex;
+  }
+`;
+
 export const VideoInfo = styled.div`
   display: flex;
   flex-direction: column;

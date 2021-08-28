@@ -1,4 +1,5 @@
 import React, { useContext, useCallback } from 'react';
+import { firestore } from '../../services/Firebase/firebase';
 
 import { useVideosReducer } from '../../utils/hooks/useVideosReducer';
 
@@ -18,7 +19,8 @@ function useSearch() {
 }
 
 function SearchProvider({ children }) {
-  const [{ videos, video, relatedVideos, filter }, dispatch] = useVideosReducer();
+  const [{ videos, video, relatedVideos, favoriteVideos, filter }, dispatch] =
+    useVideosReducer();
 
   const getVideos = useCallback(async () => {
     try {
@@ -76,17 +78,40 @@ function SearchProvider({ children }) {
     [dispatch]
   );
 
+  const getFavoriteVideos = useCallback(
+    (currenUserId) => {
+      try {
+        const collection = firestore
+          .collection('users')
+          .doc(currenUserId)
+          .collection('videos');
+        collection.onSnapshot((querySnapshot) => {
+          const data = [];
+          querySnapshot.forEach((doc) => {
+            data.push(doc.data());
+          });
+          dispatch({ type: 'FAVORITE_VIDEOS', data });
+        });
+      } catch (error) {
+        console.error('Error: ', error);
+      }
+    },
+    [dispatch]
+  );
+
   return (
     <SearchContext.Provider
       value={{
         video,
         videos,
         relatedVideos,
+        favoriteVideos,
         filter,
         getVideos,
         getVideo,
         handleFilters,
         getRelatedVideos,
+        getFavoriteVideos,
       }}
     >
       {children}
