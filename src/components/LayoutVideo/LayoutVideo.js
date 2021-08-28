@@ -46,19 +46,19 @@ function LayoutVideo(props) {
     }
   }
 
-  function addToFavorite(data) {
-    saveVideoToFavorites(data.video);
+  function addToFavorite(video) {
+    saveVideoToFavorites(video);
 
     setFavoriteClicked({
       ...favoriteClicked,
-      [data.index]: true,
+      [video.id.videoId]: true,
     });
   }
 
   return (
     <LayoutVideos data-testid="videos" relatedVideos={relatedVideos}>
       {props.videos.length > 0 &&
-        props.videos.map((video, index) => {
+        props.videos.map((video) => {
           if (video.snippet && video.id.kind === 'youtube#video') {
             return (
               <VideoDetail
@@ -82,10 +82,10 @@ function LayoutVideo(props) {
                         <BsTrash onClick={() => deleteVideoFromFavorites(video)} />
                       ) : (
                         <div>
-                          {favoriteClicked[index] ? (
+                          {favoriteClicked[video.id.videoId] ? (
                             <BsHeartFill />
                           ) : (
-                            <BsHeart onClick={() => addToFavorite({ video, index })} />
+                            <BsHeart onClick={() => addToFavorite(video)} />
                           )}
                         </div>
                       )}
