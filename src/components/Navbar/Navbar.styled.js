@@ -73,6 +73,12 @@ export const ButtonLogin = styled.button`
   }
 `;
 
+export const LoadingProfile = styled.div`
+  svg {
+    color: ${({ theme }) => theme.iconLoadingColor};
+  }
+`;
+
 export const SmallScreenSearchBar = styled.div`
   display: flex;
 `;

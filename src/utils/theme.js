@@ -25,6 +25,7 @@ export const light = {
   modalColorButtons: '#F9F3FD',
   menuBorder: '#cdc4d1',
   menuBackground: '#cdc4d1',
+  iconLoadingColor: '#cdc4d1',
 };
 
 export const dark = {
@@ -54,4 +55,5 @@ export const dark = {
   modalColorButtons: '#F9F3FD',
   menuBorder: '#403157',
   menuBackground: '#403157',
+  iconLoadingColor: '#09070c',
 };

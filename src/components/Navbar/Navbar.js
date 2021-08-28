@@ -15,6 +15,7 @@ import {
   Column,
   SmallScreenSearchBar,
   LeftArrow,
+  LoadingProfile,
 } from './Navbar.styled';
 
 function Navbar() {
@@ -70,9 +71,9 @@ function Navbar() {
               )}
             </div>
           ) : (
-            <div>
+            <LoadingProfile>
               <BsCircleFill data-testid="profile-blank" />
-            </div>
+            </LoadingProfile>
           )}
         </Column>
         {menuAccountOpen ? <MenuAccount setMenuAccountOpen={setMenuAccountOpen} /> : null}
