@@ -12,7 +12,7 @@ function useTheme() {
 }
 
 function ThemeControlProvider({ children }) {
-  const [theme, setTheme] = useState(light);
+  const [theme, setTheme] = useState(dark);
 
   const handleTheme = () => {
     if (theme.name === 'light') {
@@ -30,8 +30,8 @@ function ThemeControlProvider({ children }) {
     if (localThemeParsed) {
       setTheme(localThemeParsed);
     } else {
-      window.localStorage.setItem('theme', JSON.stringify(light));
-      setTheme(light);
+      window.localStorage.setItem('theme', JSON.stringify(dark));
+      setTheme(dark);
     }
   }, []);
 
