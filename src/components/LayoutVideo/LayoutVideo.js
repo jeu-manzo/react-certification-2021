@@ -5,6 +5,7 @@ import { BsHeart, BsHeartFill, BsTrash } from 'react-icons/bs';
 import SkeletonLoader from '../SkeletonLoader/SkeletonLoader';
 import { firestore } from '../../services/Firebase/firebase';
 import { useAuth } from '../../providers/Auth/Auth.provider';
+import { useSearch } from '../../providers/Search';
 
 import {
   LayoutVideos,
@@ -19,6 +20,7 @@ function LayoutVideo(props) {
   const { relatedVideos } = props;
   const { favoriteVideos } = props;
   const { currentUser } = useAuth();
+  const { loadingVideos } = useSearch();
   const [favoriteClicked, setFavoriteClicked] = useState({});
 
   function saveVideoToFavorites(video) {
@@ -56,7 +58,7 @@ function LayoutVideo(props) {
     });
   }
 
-  if (props.videos.length > 0) {
+  if (!loadingVideos) {
     return (
       <LayoutVideos data-testid="videos" relatedVideos={relatedVideos}>
         {props.videos.map((video) => {

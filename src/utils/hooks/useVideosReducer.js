@@ -34,6 +34,12 @@ export const useVideosReducer = () => {
           filter: action.filter,
         };
       }
+      case 'LOADING_VIDEOS': {
+        return {
+          ...state,
+          loadingVideos: action.loading,
+        };
+      }
       default: {
         return state;
       }
@@ -46,6 +52,7 @@ export const useVideosReducer = () => {
     relatedVideos: [],
     favoriteVideos: [],
     filter: 'vaporwave synthwave chillwave',
+    loadingVideos: true,
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
