@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BsHeart, BsHeartFill, BsTrash } from 'react-icons/bs';
 
+import SkeletonLoader from '../SkeletonLoader/SkeletonLoader';
 import { firestore } from '../../services/Firebase/firebase';
 import { useAuth } from '../../providers/Auth/Auth.provider';
 
@@ -55,10 +56,10 @@ function LayoutVideo(props) {
     });
   }
 
-  return (
-    <LayoutVideos data-testid="videos" relatedVideos={relatedVideos}>
-      {props.videos.length > 0 &&
-        props.videos.map((video) => {
+  if (props.videos.length > 0) {
+    return (
+      <LayoutVideos data-testid="videos" relatedVideos={relatedVideos}>
+        {props.videos.map((video) => {
           if (video.snippet && video.id.kind === 'youtube#video') {
             return (
               <VideoDetail
@@ -101,7 +102,14 @@ function LayoutVideo(props) {
           }
           return true;
         })}
-    </LayoutVideos>
+      </LayoutVideos>
+    );
+  }
+  return (
+    <SkeletonLoader
+      mainLayoutVideos={mainLayoutVideos || favoriteVideos}
+      relatedVideos={relatedVideos}
+    />
   );
 }
 
