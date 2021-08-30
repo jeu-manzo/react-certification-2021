@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const Layout = styled.div`
   display: flex;
+  width: 100%;
+  height: 100%;
   padding: 20px;
   @media (max-width: 1012px) {
     flex-direction: column;
