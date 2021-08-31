@@ -13,10 +13,11 @@ import {
   Content,
   Fieldset,
   PasswordInput,
-  Button,
   ButtonImg,
   CreateAccount,
   ButtonSwitch,
+  ButtonSign,
+  ErrorMessage,
 } from './ModalLogin.styled';
 
 const modalRoot = document.createElement('div');
@@ -24,32 +25,59 @@ modalRoot.setAttribute('id', 'root-modal');
 document.body.appendChild(modalRoot);
 
 function ModalLogin({ closeModal }) {
-  const { signup, login } = useAuth();
+  const { signup, login, googleLogin, facebookLogin } = useAuth();
   const [visiblePassword, setVisiblePassword] = useState(false);
   const [isModalLogin, setIsModalLogin] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(null);
   const emailRef = useRef();
   const passwordRef = useRef();
   const history = useHistory();
 
   async function handleSignup(e) {
     e.preventDefault();
+    setErrorMessage(null);
     try {
       await signup(emailRef.current.value, passwordRef.current.value);
       closeModal();
       history.push('/');
     } catch (error) {
-      console.log('error-signup', error);
+      setErrorMessage(error.message);
     }
   }
 
   async function handleLogin(e) {
     e.preventDefault();
+    setErrorMessage(null);
     try {
       await login(emailRef.current.value, passwordRef.current.value);
       closeModal();
       history.push('/');
     } catch (error) {
-      console.log('error-login', error);
+      setErrorMessage(error.message);
+    }
+  }
+
+  async function handleGoogleLogin(e) {
+    e.preventDefault();
+    setErrorMessage(null);
+    try {
+      await googleLogin();
+      closeModal();
+      history.push('/');
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
+  }
+
+  async function handleFacebookLogin(e) {
+    e.preventDefault();
+    setErrorMessage(null);
+    try {
+      await facebookLogin();
+      closeModal();
+      history.push('/');
+    } catch (error) {
+      setErrorMessage(error.message);
     }
   }
 
@@ -91,16 +119,17 @@ function ModalLogin({ closeModal }) {
               )}
             </PasswordInput>
             {isModalLogin ? <a href="/">Forgot your password?</a> : null}
-            <Button type="button" onClick={isModalLogin ? handleLogin : handleSignup}>
+            {errorMessage ? <ErrorMessage>{errorMessage}</ErrorMessage> : null}
+            <ButtonSign type="button" onClick={isModalLogin ? handleLogin : handleSignup}>
               {isModalLogin ? 'Log In' : 'Sign Up'}
-            </Button>
+            </ButtonSign>
           </Fieldset>
           <p>or</p>
-          <ButtonImg type="button">
+          <ButtonImg type="button" onClick={handleFacebookLogin}>
             <img src="facebook-logo.svg" alt="logo-fb" />
             <p>Continue with Facebook</p>
           </ButtonImg>
-          <ButtonImg type="button">
+          <ButtonImg type="button" onClick={handleGoogleLogin}>
             <img src="google-logo.svg" alt="logo-google" />
             <p>Continue with Google</p>
           </ButtonImg>

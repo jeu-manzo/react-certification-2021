@@ -26,6 +26,8 @@ export const light = {
   menuBorder: '#cdc4d1',
   menuBackground: '#cdc4d1',
   iconLoadingColor: '#cdc4d1',
+  loadingBackground: '#d6cfda',
+  loadingColor: '242, 240, 244,',
 };
 
 export const dark = {
@@ -56,4 +58,6 @@ export const dark = {
   menuBorder: '#403157',
   menuBackground: '#403157',
   iconLoadingColor: '#09070c',
+  loadingBackground: '#403157',
+  loadingColor: '92, 70, 125,',
 };

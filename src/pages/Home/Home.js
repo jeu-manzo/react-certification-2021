@@ -3,12 +3,14 @@ import React from 'react';
 import Filter from '../../components/Filter';
 import Content from '../../components/Content';
 
+import { Home } from './Home.styled';
+
 function HomePage() {
   return (
-    <section data-testid="homepage">
+    <Home data-testid="homepage">
       <Filter />
       <Content />
-    </section>
+    </Home>
   );
 }
 

@@ -21,9 +21,15 @@ export const ModalDialog = styled.div`
   padding: 20px 10px 24px;
   background-color: ${({ theme }) => theme.body};
   border-radius: 8px;
-  @media (max-width: 510px) {
+  @media (max-width: 540px) {
     height: 100%;
     width: 100%;
+  }
+  @media (max-height: 900px) {
+    padding-top: 100px;
+  }
+  @media (max-height: 635px) {
+    padding-top: 180px;
   }
 `;
 
@@ -83,6 +89,7 @@ export const Fieldset = styled.fieldset`
   width: 100%;
   padding: 0;
   border: none;
+  position: relative;
   input {
     height: 48px;
     width: 100%;
@@ -164,4 +171,17 @@ export const CreateAccount = styled.div`
 export const ButtonSwitch = styled(Button)`
   width: 150px;
   margin-top: 0;
+`;
+
+export const ButtonSign = styled(Button)`
+  margin-top: 65px;
+`;
+
+export const ErrorMessage = styled.div`
+  position: absolute;
+  right: 10px;
+  bottom: 47px;
+  left: 10px;
+  color: #ea526f;
+  font-size: 11px;
 `;

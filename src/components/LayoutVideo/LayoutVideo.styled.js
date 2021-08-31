@@ -70,7 +70,7 @@ export const VideoFavorite = styled.span`
   position: absolute;
   top: 10px;
   right: 10px;
-  color: ${({ theme }) => theme.color};
+  color: #f9f3fd;
   font-size: 16px;
   background: rgba(0, 0, 0, 0.6);
   padding: 5px;

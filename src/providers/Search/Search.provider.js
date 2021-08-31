@@ -19,19 +19,24 @@ function useSearch() {
 }
 
 function SearchProvider({ children }) {
-  const [{ videos, video, relatedVideos, favoriteVideos, filter }, dispatch] =
-    useVideosReducer();
+  const [
+    { videos, video, relatedVideos, favoriteVideos, filter, loadingVideos },
+    dispatch,
+  ] = useVideosReducer();
 
   const getVideos = useCallback(async () => {
     try {
+      dispatch({ type: 'LOADING_VIDEOS', loading: true });
       const key = process.env.REACT_APP_YOUTUBE_API_KEY;
       const res = await fetch(
         `${API_URL}?part=snippet&maxResults=50&type=video&q=${filter}&key=${key}`
       );
       const data = await res.json();
       dispatch({ type: 'SEARCH_VIDEOS', data });
+      dispatch({ type: 'LOADING_VIDEOS', loading: false });
     } catch (error) {
       dispatch({ type: 'SEARCH_VIDEOS', data: videosMock.items });
+      dispatch({ type: 'LOADING_VIDEOS', loading: false });
       console.error('Error: ', error);
     }
   }, [filter, dispatch]);
@@ -49,12 +54,15 @@ function SearchProvider({ children }) {
   const getVideo = useCallback(
     async (videoId) => {
       try {
+        dispatch({ type: 'LOADING_VIDEOS', loading: true });
         const key = process.env.REACT_APP_YOUTUBE_API_KEY;
         const res = await fetch(`${API_URL_VIDEO}?part=snippet&id=${videoId}&key=${key}`);
         const data = await res.json();
         dispatch({ type: 'VIDEO_BY_ID', data });
+        dispatch({ type: 'LOADING_VIDEOS', loading: false });
       } catch (error) {
         dispatch({ type: 'VIDEO_BY_ID', data: videosMock.items });
+        dispatch({ type: 'LOADING_VIDEOS', loading: false });
         console.error('Error: ', error);
       }
     },
@@ -64,14 +72,17 @@ function SearchProvider({ children }) {
   const getRelatedVideos = useCallback(
     async (videoId) => {
       try {
+        dispatch({ type: 'LOADING_VIDEOS', loading: true });
         const key = process.env.REACT_APP_YOUTUBE_API_KEY;
         const res = await fetch(
           `${API_URL}?part=snippet&maxResults=50&type=video&relatedToVideoId=${videoId}&key=${key}`
         );
         const data = await res.json();
         dispatch({ type: 'RELATED_VIDEOS', data });
+        dispatch({ type: 'LOADING_VIDEOS', loading: false });
       } catch (error) {
         dispatch({ type: 'RELATED_VIDEOS', data: videosMock.items });
+        dispatch({ type: 'LOADING_VIDEOS', loading: false });
         console.error('Error: ', error);
       }
     },
@@ -81,6 +92,7 @@ function SearchProvider({ children }) {
   const getFavoriteVideos = useCallback(
     (currenUserId) => {
       try {
+        dispatch({ type: 'LOADING_VIDEOS', loading: true });
         const collection = firestore
           .collection('users')
           .doc(currenUserId)
@@ -91,8 +103,10 @@ function SearchProvider({ children }) {
             data.push(doc.data());
           });
           dispatch({ type: 'FAVORITE_VIDEOS', data });
+          dispatch({ type: 'LOADING_VIDEOS', loading: false });
         });
       } catch (error) {
+        dispatch({ type: 'LOADING_VIDEOS', loading: false });
         console.error('Error: ', error);
       }
     },
@@ -107,6 +121,7 @@ function SearchProvider({ children }) {
         relatedVideos,
         favoriteVideos,
         filter,
+        loadingVideos,
         getVideos,
         getVideo,
         handleFilters,

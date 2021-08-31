@@ -15,7 +15,7 @@ function PrivateRoute({ component: Component, ...rest }) {
       />
     );
   }
-  return <div>Loading...</div>;
+  return true;
 }
 
 export default PrivateRoute;

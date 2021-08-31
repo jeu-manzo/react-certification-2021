@@ -1,5 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { auth } from '../../services/Firebase/firebase';
+import {
+  auth,
+  googleAuthProvider,
+  facebookAuthProvider,
+} from '../../services/Firebase/firebase';
 
 const AuthContext = React.createContext(null);
 
@@ -23,6 +27,14 @@ function AuthProvider({ children }) {
     return auth.signInWithEmailAndPassword(email, password);
   }
 
+  function facebookLogin() {
+    return auth.signInWithPopup(facebookAuthProvider);
+  }
+
+  function googleLogin() {
+    return auth.signInWithPopup(googleAuthProvider);
+  }
+
   function logout() {
     auth.signOut();
   }
@@ -44,6 +56,8 @@ function AuthProvider({ children }) {
         signup,
         login,
         logout,
+        facebookLogin,
+        googleLogin,
       }}
     >
       {children}

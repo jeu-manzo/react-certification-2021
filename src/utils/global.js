@@ -8,6 +8,8 @@ export const GlobalStyle = createGlobalStyle`
     transition: background-color 1s;
   }
   body, html {
+    height: 100%;
+    width: 100%;
     margin: 0;
     overflow-x: hidden;
     ::-webkit-scrollbar {
@@ -22,5 +24,9 @@ export const GlobalStyle = createGlobalStyle`
       background-image: linear-gradient(180deg, #F9CB4A 0%, #EC58BD 99%);
       box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
     }
+  }
+  #root {
+    height: 100%;
+    width: 100%;
   }
 `;

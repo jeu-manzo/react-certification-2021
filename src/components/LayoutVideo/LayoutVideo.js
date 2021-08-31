@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BsHeart, BsHeartFill, BsTrash } from 'react-icons/bs';
 
+import SkeletonLoader from '../SkeletonLoader/SkeletonLoader';
 import { firestore } from '../../services/Firebase/firebase';
 import { useAuth } from '../../providers/Auth/Auth.provider';
+import { useSearch } from '../../providers/Search';
 
 import {
   LayoutVideos,
@@ -18,6 +20,7 @@ function LayoutVideo(props) {
   const { relatedVideos } = props;
   const { favoriteVideos } = props;
   const { currentUser } = useAuth();
+  const { loadingVideos } = useSearch();
   const [favoriteClicked, setFavoriteClicked] = useState({});
 
   function saveVideoToFavorites(video) {
@@ -55,10 +58,10 @@ function LayoutVideo(props) {
     });
   }
 
-  return (
-    <LayoutVideos data-testid="videos" relatedVideos={relatedVideos}>
-      {props.videos.length > 0 &&
-        props.videos.map((video) => {
+  if (!loadingVideos) {
+    return (
+      <LayoutVideos data-testid="videos" relatedVideos={relatedVideos}>
+        {props.videos.map((video) => {
           if (video.snippet && video.id.kind === 'youtube#video') {
             return (
               <VideoDetail
@@ -101,7 +104,14 @@ function LayoutVideo(props) {
           }
           return true;
         })}
-    </LayoutVideos>
+      </LayoutVideos>
+    );
+  }
+  return (
+    <SkeletonLoader
+      mainLayoutVideos={mainLayoutVideos || favoriteVideos}
+      relatedVideos={relatedVideos}
+    />
   );
 }
 
