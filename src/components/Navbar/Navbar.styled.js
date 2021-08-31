@@ -81,6 +81,7 @@ export const LoadingProfile = styled.div`
 
 export const SmallScreenSearchBar = styled.div`
   display: flex;
+  padding-top: 10px;
 `;
 
 export const LeftArrow = styled.div`

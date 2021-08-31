@@ -21,9 +21,15 @@ export const ModalDialog = styled.div`
   padding: 20px 10px 24px;
   background-color: ${({ theme }) => theme.body};
   border-radius: 8px;
-  @media (max-width: 510px) {
+  @media (max-width: 540px) {
     height: 100%;
     width: 100%;
+  }
+  @media (max-height: 900px) {
+    padding-top: 100px;
+  }
+  @media (max-height: 635px) {
+    padding-top: 180px;
   }
 `;
 
@@ -174,7 +180,7 @@ export const ButtonSign = styled(Button)`
 export const ErrorMessage = styled.div`
   position: absolute;
   right: 10px;
-  bottom: 70px;
+  bottom: 47px;
   left: 10px;
   color: #ea526f;
   font-size: 11px;

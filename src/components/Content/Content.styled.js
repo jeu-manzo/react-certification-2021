@@ -6,7 +6,6 @@ export const VideoContent = styled.section`
   height: 100%;
   width: 100%;
   background-color: ${({ theme }) => theme.contentBackground};
-  padding: 20px;
   transition: background-color 1s;
   div {
     display: flex;
