@@ -83,6 +83,7 @@ export const Fieldset = styled.fieldset`
   width: 100%;
   padding: 0;
   border: none;
+  position: relative;
   input {
     height: 48px;
     width: 100%;
@@ -164,4 +165,17 @@ export const CreateAccount = styled.div`
 export const ButtonSwitch = styled(Button)`
   width: 150px;
   margin-top: 0;
+`;
+
+export const ButtonSign = styled(Button)`
+  margin-top: 65px;
+`;
+
+export const ErrorMessage = styled.div`
+  position: absolute;
+  right: 10px;
+  bottom: 70px;
+  left: 10px;
+  color: #ea526f;
+  font-size: 11px;
 `;
