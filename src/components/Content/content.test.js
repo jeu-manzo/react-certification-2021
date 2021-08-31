@@ -15,8 +15,8 @@ beforeEach(() => {
 });
 
 describe('Content', () => {
-  test('should have videos', () => {
-    const videos = screen.getByTestId(/videos/i);
-    expect(videos).toBeInTheDocument();
+  test('should have skeleton loader', () => {
+    const skeletonLoader = screen.getByTestId(/skeletonLoader/i);
+    expect(skeletonLoader).toBeInTheDocument();
   });
 });

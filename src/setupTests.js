@@ -12,8 +12,13 @@ jest.mock('firebase/app', () => {
           return cb({ email: 'test@email.com' });
         },
         signOut: jest.fn(),
+        signInWithPopup: jest.fn(),
       })),
       firestore: jest.fn(),
     })),
+    auth: {
+      GoogleAuthProvider: jest.fn(),
+      FacebookAuthProvider: jest.fn(),
+    },
   };
 });

@@ -18,7 +18,7 @@ function SkeletonLoader(props) {
     25, 26, 27, 28, 29, 30, 31,
   ];
   return (
-    <LayoutVideos relatedVideos={relatedVideos}>
+    <LayoutVideos relatedVideos={relatedVideos} data-testid="skeletonLoader">
       {numberOfSkeletonVideos.map((video) => {
         return (
           <VideoDetail key={video} mainLayout={mainLayoutVideos || favoriteVideos}>
