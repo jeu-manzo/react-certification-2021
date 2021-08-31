@@ -25,7 +25,7 @@ modalRoot.setAttribute('id', 'root-modal');
 document.body.appendChild(modalRoot);
 
 function ModalLogin({ closeModal }) {
-  const { signup, login } = useAuth();
+  const { signup, login, googleLogin, facebookLogin } = useAuth();
   const [visiblePassword, setVisiblePassword] = useState(false);
   const [isModalLogin, setIsModalLogin] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -50,6 +50,30 @@ function ModalLogin({ closeModal }) {
     setErrorMessage(null);
     try {
       await login(emailRef.current.value, passwordRef.current.value);
+      closeModal();
+      history.push('/');
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
+  }
+
+  async function handleGoogleLogin(e) {
+    e.preventDefault();
+    setErrorMessage(null);
+    try {
+      await googleLogin();
+      closeModal();
+      history.push('/');
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
+  }
+
+  async function handleFacebookLogin(e) {
+    e.preventDefault();
+    setErrorMessage(null);
+    try {
+      await facebookLogin();
       closeModal();
       history.push('/');
     } catch (error) {
@@ -101,11 +125,11 @@ function ModalLogin({ closeModal }) {
             </ButtonSign>
           </Fieldset>
           <p>or</p>
-          <ButtonImg type="button">
+          <ButtonImg type="button" onClick={handleFacebookLogin}>
             <img src="facebook-logo.svg" alt="logo-fb" />
             <p>Continue with Facebook</p>
           </ButtonImg>
-          <ButtonImg type="button">
+          <ButtonImg type="button" onClick={handleGoogleLogin}>
             <img src="google-logo.svg" alt="logo-google" />
             <p>Continue with Google</p>
           </ButtonImg>
